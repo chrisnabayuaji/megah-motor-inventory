@@ -1,0 +1,26 @@
+C:\Users\User\source\repos\Megah Motor Inventory\bin\Debug\Megah Motor Inventory.exe.config
+C:\Users\User\source\repos\Megah Motor Inventory\bin\Debug\Megah Motor Inventory.exe
+C:\Users\User\source\repos\Megah Motor Inventory\bin\Debug\Megah Motor Inventory.pdb
+C:\Users\User\source\repos\Megah Motor Inventory\bin\Debug\SdkApi.Core.dll
+C:\Users\User\source\repos\Megah Motor Inventory\bin\Debug\SdkApi.Desktop.dll
+C:\Users\User\source\repos\Megah Motor Inventory\bin\Debug\SdkApi.Desktop.Usb.dll
+C:\Users\User\source\repos\Megah Motor Inventory\bin\Debug\Newtonsoft.Json.dll
+C:\Users\User\source\repos\Megah Motor Inventory\bin\Debug\SharpSnmpLib.dll
+C:\Users\User\source\repos\Megah Motor Inventory\bin\Debug\Csv.dll
+C:\Users\User\source\repos\Megah Motor Inventory\bin\Debug\FluentFTP.dll
+C:\Users\User\source\repos\Megah Motor Inventory\bin\Debug\BouncyCastle.Crypto.dll
+C:\Users\User\source\repos\Megah Motor Inventory\bin\Debug\Windows.winmd
+C:\Users\User\source\repos\Megah Motor Inventory\bin\Debug\System.Runtime.WindowsRuntime.dll
+C:\Users\User\source\repos\Megah Motor Inventory\bin\Debug\SdkApi.Core.pdb
+C:\Users\User\source\repos\Megah Motor Inventory\bin\Debug\SdkApi.Core.xml
+C:\Users\User\source\repos\Megah Motor Inventory\bin\Debug\SdkApi.Desktop.pdb
+C:\Users\User\source\repos\Megah Motor Inventory\bin\Debug\SdkApi.Desktop.xml
+C:\Users\User\source\repos\Megah Motor Inventory\bin\Debug\SdkApi.Desktop.Usb.pdb
+C:\Users\User\source\repos\Megah Motor Inventory\obj\Debug\Megah Motor Inventory.csprojAssemblyReference.cache
+C:\Users\User\source\repos\Megah Motor Inventory\obj\Debug\Megah_Motor_Inventory.frmMain.resources
+C:\Users\User\source\repos\Megah Motor Inventory\obj\Debug\Megah_Motor_Inventory.Properties.Resources.resources
+C:\Users\User\source\repos\Megah Motor Inventory\obj\Debug\Megah Motor Inventory.csproj.GenerateResource.cache
+C:\Users\User\source\repos\Megah Motor Inventory\obj\Debug\Megah Motor Inventory.csproj.CoreCompileInputs.cache
+C:\Users\User\source\repos\Megah Motor Inventory\obj\Debug\Megah Motor Inventory.csproj.CopyComplete
+C:\Users\User\source\repos\Megah Motor Inventory\obj\Debug\Megah Motor Inventory.exe
+C:\Users\User\source\repos\Megah Motor Inventory\obj\Debug\Megah Motor Inventory.pdb
