@@ -37,32 +37,39 @@
       this.tblLayoutMain = new System.Windows.Forms.TableLayoutPanel();
       this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
       this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-      this.button1 = new System.Windows.Forms.Button();
-      this.textBox1 = new System.Windows.Forms.TextBox();
-      this.button2 = new System.Windows.Forms.Button();
-      this.button3 = new System.Windows.Forms.Button();
+      this.btnTambah = new System.Windows.Forms.Button();
+      this.txtCari = new System.Windows.Forms.TextBox();
+      this.btnCari = new System.Windows.Forms.Button();
+      this.btnResetCari = new System.Windows.Forms.Button();
       this.dg = new System.Windows.Forms.DataGridView();
       this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
       this.label2 = new System.Windows.Forms.Label();
       this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-      this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
+      this.numJumlahCetak = new System.Windows.Forms.NumericUpDown();
       this.label10 = new System.Windows.Forms.Label();
       this.label9 = new System.Windows.Forms.Label();
+      this.txtHurufMandarin = new System.Windows.Forms.TextBox();
       this.label8 = new System.Windows.Forms.Label();
-      this.textBox6 = new System.Windows.Forms.TextBox();
       this.label7 = new System.Windows.Forms.Label();
-      this.textBox5 = new System.Windows.Forms.TextBox();
+      this.txtKodeJual = new System.Windows.Forms.TextBox();
       this.label6 = new System.Windows.Forms.Label();
-      this.textBox4 = new System.Windows.Forms.TextBox();
+      this.txtTipeMobil = new System.Windows.Forms.TextBox();
       this.label5 = new System.Windows.Forms.Label();
-      this.textBox3 = new System.Windows.Forms.TextBox();
+      this.txtNamaBarang = new System.Windows.Forms.TextBox();
       this.label4 = new System.Windows.Forms.Label();
       this.label3 = new System.Windows.Forms.Label();
-      this.textBox2 = new System.Windows.Forms.TextBox();
+      this.txtAsalBarang = new System.Windows.Forms.TextBox();
+      this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
+      this.btnSimpan = new System.Windows.Forms.Button();
+      this.btnCetak = new System.Windows.Forms.Button();
+      this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
+      this.btnReset = new System.Windows.Forms.Button();
+      this.btnHapus = new System.Windows.Forms.Button();
       this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
-      this.textBox7 = new System.Windows.Forms.TextBox();
-      this.button4 = new System.Windows.Forms.Button();
-      this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+      this.txtKodeMandarin = new System.Windows.Forms.TextBox();
+      this.btnKonversi = new System.Windows.Forms.Button();
+      this.numJumlahBarang = new System.Windows.Forms.NumericUpDown();
+      this.txtId = new System.Windows.Forms.TextBox();
       this.panel1.SuspendLayout();
       this.tblLayoutMain.SuspendLayout();
       this.tableLayoutPanel1.SuspendLayout();
@@ -70,9 +77,11 @@
       ((System.ComponentModel.ISupportInitialize)(this.dg)).BeginInit();
       this.tableLayoutPanel3.SuspendLayout();
       this.tableLayoutPanel4.SuspendLayout();
-      ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
+      ((System.ComponentModel.ISupportInitialize)(this.numJumlahCetak)).BeginInit();
+      this.tableLayoutPanel6.SuspendLayout();
+      this.tableLayoutPanel7.SuspendLayout();
       this.tableLayoutPanel5.SuspendLayout();
-      ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+      ((System.ComponentModel.ISupportInitialize)(this.numJumlahBarang)).BeginInit();
       this.SuspendLayout();
       // 
       // panel1
@@ -111,8 +120,8 @@
       // tblLayoutMain
       // 
       this.tblLayoutMain.ColumnCount = 2;
-      this.tblLayoutMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 55F));
-      this.tblLayoutMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 45F));
+      this.tblLayoutMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60F));
+      this.tblLayoutMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
       this.tblLayoutMain.Controls.Add(this.tableLayoutPanel1, 0, 0);
       this.tblLayoutMain.Controls.Add(this.tableLayoutPanel3, 1, 0);
       this.tblLayoutMain.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -133,10 +142,9 @@
       this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
       this.tableLayoutPanel1.Name = "tableLayoutPanel1";
       this.tableLayoutPanel1.RowCount = 2;
-      this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 55F));
+      this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
       this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-      this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-      this.tableLayoutPanel1.Size = new System.Drawing.Size(678, 564);
+      this.tableLayoutPanel1.Size = new System.Drawing.Size(741, 564);
       this.tableLayoutPanel1.TabIndex = 0;
       // 
       // tableLayoutPanel2
@@ -147,59 +155,60 @@
       this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 250F));
       this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
       this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-      this.tableLayoutPanel2.Controls.Add(this.button1, 0, 0);
-      this.tableLayoutPanel2.Controls.Add(this.textBox1, 2, 0);
-      this.tableLayoutPanel2.Controls.Add(this.button2, 3, 0);
-      this.tableLayoutPanel2.Controls.Add(this.button3, 4, 0);
+      this.tableLayoutPanel2.Controls.Add(this.btnTambah, 0, 0);
+      this.tableLayoutPanel2.Controls.Add(this.txtCari, 2, 0);
+      this.tableLayoutPanel2.Controls.Add(this.btnCari, 3, 0);
+      this.tableLayoutPanel2.Controls.Add(this.btnResetCari, 4, 0);
       this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
       this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 3);
       this.tableLayoutPanel2.Name = "tableLayoutPanel2";
       this.tableLayoutPanel2.RowCount = 1;
       this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-      this.tableLayoutPanel2.Size = new System.Drawing.Size(672, 49);
+      this.tableLayoutPanel2.Size = new System.Drawing.Size(735, 44);
       this.tableLayoutPanel2.TabIndex = 0;
       // 
-      // button1
+      // btnTambah
       // 
-      this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.button1.Location = new System.Drawing.Point(3, 3);
-      this.button1.Name = "button1";
-      this.button1.Size = new System.Drawing.Size(114, 43);
-      this.button1.TabIndex = 0;
-      this.button1.Text = "Tambah";
-      this.button1.UseVisualStyleBackColor = true;
+      this.btnTambah.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.btnTambah.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.btnTambah.Location = new System.Drawing.Point(3, 3);
+      this.btnTambah.Name = "btnTambah";
+      this.btnTambah.Size = new System.Drawing.Size(114, 38);
+      this.btnTambah.TabIndex = 0;
+      this.btnTambah.Text = "Tambah";
+      this.btnTambah.UseVisualStyleBackColor = true;
+      this.btnTambah.Click += new System.EventHandler(this.btnTambah_Click);
       // 
-      // textBox1
+      // txtCari
       // 
-      this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.textBox1.Location = new System.Drawing.Point(225, 3);
-      this.textBox1.Name = "textBox1";
-      this.textBox1.Size = new System.Drawing.Size(244, 44);
-      this.textBox1.TabIndex = 1;
+      this.txtCari.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.txtCari.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.txtCari.Location = new System.Drawing.Point(288, 3);
+      this.txtCari.Name = "txtCari";
+      this.txtCari.Size = new System.Drawing.Size(244, 38);
+      this.txtCari.TabIndex = 1;
       // 
-      // button2
+      // btnCari
       // 
-      this.button2.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.button2.Location = new System.Drawing.Point(475, 3);
-      this.button2.Name = "button2";
-      this.button2.Size = new System.Drawing.Size(94, 43);
-      this.button2.TabIndex = 2;
-      this.button2.Text = "Cari";
-      this.button2.UseVisualStyleBackColor = true;
+      this.btnCari.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.btnCari.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.btnCari.Location = new System.Drawing.Point(538, 3);
+      this.btnCari.Name = "btnCari";
+      this.btnCari.Size = new System.Drawing.Size(94, 38);
+      this.btnCari.TabIndex = 2;
+      this.btnCari.Text = "Cari";
+      this.btnCari.UseVisualStyleBackColor = true;
       // 
-      // button3
+      // btnResetCari
       // 
-      this.button3.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.button3.Location = new System.Drawing.Point(575, 3);
-      this.button3.Name = "button3";
-      this.button3.Size = new System.Drawing.Size(94, 43);
-      this.button3.TabIndex = 3;
-      this.button3.Text = "Reset";
-      this.button3.UseVisualStyleBackColor = true;
+      this.btnResetCari.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.btnResetCari.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.btnResetCari.Location = new System.Drawing.Point(638, 3);
+      this.btnResetCari.Name = "btnResetCari";
+      this.btnResetCari.Size = new System.Drawing.Size(94, 38);
+      this.btnResetCari.TabIndex = 3;
+      this.btnResetCari.Text = "Reset";
+      this.btnResetCari.UseVisualStyleBackColor = true;
       // 
       // dg
       // 
@@ -210,7 +219,7 @@
       this.dg.AllowUserToResizeRows = false;
       dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
       dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-      dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
       dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
       dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -226,10 +235,10 @@
       dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
       this.dg.DefaultCellStyle = dataGridViewCellStyle2;
       this.dg.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.dg.Location = new System.Drawing.Point(3, 58);
+      this.dg.Location = new System.Drawing.Point(3, 53);
       this.dg.Name = "dg";
       this.dg.RowHeadersVisible = false;
-      this.dg.Size = new System.Drawing.Size(672, 503);
+      this.dg.Size = new System.Drawing.Size(735, 508);
       this.dg.TabIndex = 1;
       // 
       // tableLayoutPanel3
@@ -239,12 +248,12 @@
       this.tableLayoutPanel3.Controls.Add(this.label2, 0, 0);
       this.tableLayoutPanel3.Controls.Add(this.tableLayoutPanel4, 0, 1);
       this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.tableLayoutPanel3.Location = new System.Drawing.Point(687, 3);
+      this.tableLayoutPanel3.Location = new System.Drawing.Point(750, 3);
       this.tableLayoutPanel3.Name = "tableLayoutPanel3";
       this.tableLayoutPanel3.RowCount = 2;
       this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 55F));
       this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-      this.tableLayoutPanel3.Size = new System.Drawing.Size(555, 564);
+      this.tableLayoutPanel3.Size = new System.Drawing.Size(492, 564);
       this.tableLayoutPanel3.TabIndex = 1;
       // 
       // label2
@@ -254,7 +263,7 @@
       this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.label2.Location = new System.Drawing.Point(3, 0);
       this.label2.Name = "label2";
-      this.label2.Size = new System.Drawing.Size(549, 55);
+      this.label2.Size = new System.Drawing.Size(486, 55);
       this.label2.TabIndex = 0;
       this.label2.Text = "FORM BARANG";
       this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -264,163 +273,168 @@
       this.tableLayoutPanel4.ColumnCount = 2;
       this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35F));
       this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 65F));
-      this.tableLayoutPanel4.Controls.Add(this.numericUpDown2, 1, 7);
+      this.tableLayoutPanel4.Controls.Add(this.numJumlahCetak, 1, 7);
       this.tableLayoutPanel4.Controls.Add(this.label10, 0, 7);
       this.tableLayoutPanel4.Controls.Add(this.label9, 0, 6);
+      this.tableLayoutPanel4.Controls.Add(this.txtHurufMandarin, 1, 5);
       this.tableLayoutPanel4.Controls.Add(this.label8, 0, 5);
-      this.tableLayoutPanel4.Controls.Add(this.textBox6, 1, 4);
       this.tableLayoutPanel4.Controls.Add(this.label7, 0, 4);
-      this.tableLayoutPanel4.Controls.Add(this.textBox5, 1, 3);
+      this.tableLayoutPanel4.Controls.Add(this.txtKodeJual, 1, 3);
       this.tableLayoutPanel4.Controls.Add(this.label6, 0, 3);
-      this.tableLayoutPanel4.Controls.Add(this.textBox4, 1, 2);
+      this.tableLayoutPanel4.Controls.Add(this.txtTipeMobil, 1, 2);
       this.tableLayoutPanel4.Controls.Add(this.label5, 0, 2);
-      this.tableLayoutPanel4.Controls.Add(this.textBox3, 1, 1);
+      this.tableLayoutPanel4.Controls.Add(this.txtNamaBarang, 1, 1);
       this.tableLayoutPanel4.Controls.Add(this.label4, 0, 1);
       this.tableLayoutPanel4.Controls.Add(this.label3, 0, 0);
-      this.tableLayoutPanel4.Controls.Add(this.textBox2, 1, 0);
-      this.tableLayoutPanel4.Controls.Add(this.tableLayoutPanel5, 1, 5);
-      this.tableLayoutPanel4.Controls.Add(this.numericUpDown1, 1, 6);
+      this.tableLayoutPanel4.Controls.Add(this.txtAsalBarang, 1, 0);
+      this.tableLayoutPanel4.Controls.Add(this.tableLayoutPanel6, 1, 8);
+      this.tableLayoutPanel4.Controls.Add(this.tableLayoutPanel7, 1, 9);
+      this.tableLayoutPanel4.Controls.Add(this.tableLayoutPanel5, 1, 4);
+      this.tableLayoutPanel4.Controls.Add(this.numJumlahBarang, 1, 6);
+      this.tableLayoutPanel4.Controls.Add(this.txtId, 0, 8);
       this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
       this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 58);
       this.tableLayoutPanel4.Name = "tableLayoutPanel4";
-      this.tableLayoutPanel4.RowCount = 9;
-      this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 55F));
-      this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 55F));
-      this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 55F));
-      this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 55F));
-      this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 55F));
-      this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 55F));
-      this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 55F));
-      this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 55F));
+      this.tableLayoutPanel4.RowCount = 11;
+      this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 45F));
+      this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 45F));
+      this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 45F));
+      this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 45F));
+      this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 45F));
+      this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 45F));
+      this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 45F));
+      this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 45F));
+      this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 45F));
+      this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 45F));
       this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle());
-      this.tableLayoutPanel4.Size = new System.Drawing.Size(549, 503);
+      this.tableLayoutPanel4.Size = new System.Drawing.Size(486, 503);
       this.tableLayoutPanel4.TabIndex = 1;
       // 
-      // numericUpDown2
+      // numJumlahCetak
       // 
-      this.numericUpDown2.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.numericUpDown2.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.numericUpDown2.Location = new System.Drawing.Point(195, 388);
-      this.numericUpDown2.Name = "numericUpDown2";
-      this.numericUpDown2.Size = new System.Drawing.Size(351, 44);
-      this.numericUpDown2.TabIndex = 16;
+      this.numJumlahCetak.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.numJumlahCetak.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.numJumlahCetak.Location = new System.Drawing.Point(173, 318);
+      this.numJumlahCetak.Name = "numJumlahCetak";
+      this.numJumlahCetak.Size = new System.Drawing.Size(310, 38);
+      this.numJumlahCetak.TabIndex = 25;
       // 
       // label10
       // 
       this.label10.AutoSize = true;
       this.label10.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.label10.Location = new System.Drawing.Point(3, 385);
+      this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.label10.Location = new System.Drawing.Point(3, 315);
       this.label10.Name = "label10";
-      this.label10.Size = new System.Drawing.Size(186, 55);
-      this.label10.TabIndex = 15;
-      this.label10.Text = "Jumlah Cetak";
+      this.label10.Size = new System.Drawing.Size(164, 45);
+      this.label10.TabIndex = 24;
+      this.label10.Text = "Kode Mandarin";
       this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
       // 
       // label9
       // 
       this.label9.AutoSize = true;
       this.label9.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.label9.Location = new System.Drawing.Point(3, 330);
+      this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.label9.Location = new System.Drawing.Point(3, 270);
       this.label9.Name = "label9";
-      this.label9.Size = new System.Drawing.Size(186, 55);
-      this.label9.TabIndex = 13;
-      this.label9.Text = "Jumlah Barang";
+      this.label9.Size = new System.Drawing.Size(164, 45);
+      this.label9.TabIndex = 22;
+      this.label9.Text = "Kode Mandarin";
       this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+      // 
+      // txtHurufMandarin
+      // 
+      this.txtHurufMandarin.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.txtHurufMandarin.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.txtHurufMandarin.Location = new System.Drawing.Point(173, 228);
+      this.txtHurufMandarin.Name = "txtHurufMandarin";
+      this.txtHurufMandarin.Size = new System.Drawing.Size(310, 38);
+      this.txtHurufMandarin.TabIndex = 21;
       // 
       // label8
       // 
       this.label8.AutoSize = true;
       this.label8.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.label8.Location = new System.Drawing.Point(3, 275);
+      this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.label8.Location = new System.Drawing.Point(3, 225);
       this.label8.Name = "label8";
-      this.label8.Size = new System.Drawing.Size(186, 55);
-      this.label8.TabIndex = 11;
+      this.label8.Size = new System.Drawing.Size(164, 45);
+      this.label8.TabIndex = 20;
       this.label8.Text = "Huruf Mandarin";
       this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-      // 
-      // textBox6
-      // 
-      this.textBox6.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.textBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.textBox6.Location = new System.Drawing.Point(195, 223);
-      this.textBox6.Name = "textBox6";
-      this.textBox6.Size = new System.Drawing.Size(351, 44);
-      this.textBox6.TabIndex = 10;
       // 
       // label7
       // 
       this.label7.AutoSize = true;
       this.label7.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.label7.Location = new System.Drawing.Point(3, 220);
+      this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.label7.Location = new System.Drawing.Point(3, 180);
       this.label7.Name = "label7";
-      this.label7.Size = new System.Drawing.Size(186, 55);
+      this.label7.Size = new System.Drawing.Size(164, 45);
       this.label7.TabIndex = 9;
       this.label7.Text = "Kode Mandarin";
       this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
       // 
-      // textBox5
+      // txtKodeJual
       // 
-      this.textBox5.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.textBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.textBox5.Location = new System.Drawing.Point(195, 168);
-      this.textBox5.Name = "textBox5";
-      this.textBox5.Size = new System.Drawing.Size(351, 44);
-      this.textBox5.TabIndex = 8;
+      this.txtKodeJual.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.txtKodeJual.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.txtKodeJual.Location = new System.Drawing.Point(173, 138);
+      this.txtKodeJual.Name = "txtKodeJual";
+      this.txtKodeJual.Size = new System.Drawing.Size(310, 38);
+      this.txtKodeJual.TabIndex = 8;
       // 
       // label6
       // 
       this.label6.AutoSize = true;
       this.label6.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.label6.Location = new System.Drawing.Point(3, 165);
+      this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.label6.Location = new System.Drawing.Point(3, 135);
       this.label6.Name = "label6";
-      this.label6.Size = new System.Drawing.Size(186, 55);
+      this.label6.Size = new System.Drawing.Size(164, 45);
       this.label6.TabIndex = 7;
       this.label6.Text = "Kode Jual";
       this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
       // 
-      // textBox4
+      // txtTipeMobil
       // 
-      this.textBox4.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.textBox4.Location = new System.Drawing.Point(195, 113);
-      this.textBox4.Name = "textBox4";
-      this.textBox4.Size = new System.Drawing.Size(351, 44);
-      this.textBox4.TabIndex = 6;
+      this.txtTipeMobil.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.txtTipeMobil.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.txtTipeMobil.Location = new System.Drawing.Point(173, 93);
+      this.txtTipeMobil.Name = "txtTipeMobil";
+      this.txtTipeMobil.Size = new System.Drawing.Size(310, 38);
+      this.txtTipeMobil.TabIndex = 6;
       // 
       // label5
       // 
       this.label5.AutoSize = true;
       this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.label5.Location = new System.Drawing.Point(3, 110);
+      this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.label5.Location = new System.Drawing.Point(3, 90);
       this.label5.Name = "label5";
-      this.label5.Size = new System.Drawing.Size(186, 55);
+      this.label5.Size = new System.Drawing.Size(164, 45);
       this.label5.TabIndex = 5;
       this.label5.Text = "Tipe Mobil";
       this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
       // 
-      // textBox3
+      // txtNamaBarang
       // 
-      this.textBox3.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.textBox3.Location = new System.Drawing.Point(195, 58);
-      this.textBox3.Name = "textBox3";
-      this.textBox3.Size = new System.Drawing.Size(351, 44);
-      this.textBox3.TabIndex = 4;
+      this.txtNamaBarang.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.txtNamaBarang.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.txtNamaBarang.Location = new System.Drawing.Point(173, 48);
+      this.txtNamaBarang.Name = "txtNamaBarang";
+      this.txtNamaBarang.Size = new System.Drawing.Size(310, 38);
+      this.txtNamaBarang.TabIndex = 4;
       // 
       // label4
       // 
       this.label4.AutoSize = true;
       this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.label4.Location = new System.Drawing.Point(3, 55);
+      this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.label4.Location = new System.Drawing.Point(3, 45);
       this.label4.Name = "label4";
-      this.label4.Size = new System.Drawing.Size(186, 55);
+      this.label4.Size = new System.Drawing.Size(164, 45);
       this.label4.TabIndex = 3;
       this.label4.Text = "Nama Barang";
       this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -429,66 +443,147 @@
       // 
       this.label3.AutoSize = true;
       this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.label3.Location = new System.Drawing.Point(3, 0);
       this.label3.Name = "label3";
-      this.label3.Size = new System.Drawing.Size(186, 55);
+      this.label3.Size = new System.Drawing.Size(164, 45);
       this.label3.TabIndex = 1;
       this.label3.Text = "Asal Barang";
       this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
       // 
-      // textBox2
+      // txtAsalBarang
       // 
-      this.textBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.textBox2.Location = new System.Drawing.Point(195, 3);
-      this.textBox2.Name = "textBox2";
-      this.textBox2.Size = new System.Drawing.Size(351, 44);
-      this.textBox2.TabIndex = 2;
+      this.txtAsalBarang.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.txtAsalBarang.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.txtAsalBarang.Location = new System.Drawing.Point(173, 3);
+      this.txtAsalBarang.Name = "txtAsalBarang";
+      this.txtAsalBarang.Size = new System.Drawing.Size(310, 38);
+      this.txtAsalBarang.TabIndex = 2;
+      // 
+      // tableLayoutPanel6
+      // 
+      this.tableLayoutPanel6.ColumnCount = 2;
+      this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+      this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+      this.tableLayoutPanel6.Controls.Add(this.btnSimpan, 0, 0);
+      this.tableLayoutPanel6.Controls.Add(this.btnCetak, 1, 0);
+      this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.tableLayoutPanel6.Location = new System.Drawing.Point(170, 360);
+      this.tableLayoutPanel6.Margin = new System.Windows.Forms.Padding(0);
+      this.tableLayoutPanel6.Name = "tableLayoutPanel6";
+      this.tableLayoutPanel6.RowCount = 1;
+      this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+      this.tableLayoutPanel6.Size = new System.Drawing.Size(316, 45);
+      this.tableLayoutPanel6.TabIndex = 17;
+      // 
+      // btnSimpan
+      // 
+      this.btnSimpan.Location = new System.Drawing.Point(3, 3);
+      this.btnSimpan.Name = "btnSimpan";
+      this.btnSimpan.Size = new System.Drawing.Size(75, 23);
+      this.btnSimpan.TabIndex = 0;
+      this.btnSimpan.Text = "button2";
+      this.btnSimpan.UseVisualStyleBackColor = true;
+      this.btnSimpan.Click += new System.EventHandler(this.btnSimpan_Click);
+      // 
+      // btnCetak
+      // 
+      this.btnCetak.Location = new System.Drawing.Point(161, 3);
+      this.btnCetak.Name = "btnCetak";
+      this.btnCetak.Size = new System.Drawing.Size(75, 23);
+      this.btnCetak.TabIndex = 1;
+      this.btnCetak.Text = "button3";
+      this.btnCetak.UseVisualStyleBackColor = true;
+      this.btnCetak.Click += new System.EventHandler(this.btnCetak_Click);
+      // 
+      // tableLayoutPanel7
+      // 
+      this.tableLayoutPanel7.ColumnCount = 2;
+      this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+      this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+      this.tableLayoutPanel7.Controls.Add(this.btnReset, 0, 0);
+      this.tableLayoutPanel7.Controls.Add(this.btnHapus, 1, 0);
+      this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.tableLayoutPanel7.Location = new System.Drawing.Point(170, 405);
+      this.tableLayoutPanel7.Margin = new System.Windows.Forms.Padding(0);
+      this.tableLayoutPanel7.Name = "tableLayoutPanel7";
+      this.tableLayoutPanel7.RowCount = 1;
+      this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+      this.tableLayoutPanel7.Size = new System.Drawing.Size(316, 45);
+      this.tableLayoutPanel7.TabIndex = 18;
+      // 
+      // btnReset
+      // 
+      this.btnReset.Location = new System.Drawing.Point(3, 3);
+      this.btnReset.Name = "btnReset";
+      this.btnReset.Size = new System.Drawing.Size(75, 23);
+      this.btnReset.TabIndex = 0;
+      this.btnReset.Text = "button4";
+      this.btnReset.UseVisualStyleBackColor = true;
+      this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
+      // 
+      // btnHapus
+      // 
+      this.btnHapus.Location = new System.Drawing.Point(161, 3);
+      this.btnHapus.Name = "btnHapus";
+      this.btnHapus.Size = new System.Drawing.Size(75, 23);
+      this.btnHapus.TabIndex = 1;
+      this.btnHapus.Text = "button5";
+      this.btnHapus.UseVisualStyleBackColor = true;
+      this.btnHapus.Click += new System.EventHandler(this.btnHapus_Click);
       // 
       // tableLayoutPanel5
       // 
       this.tableLayoutPanel5.ColumnCount = 2;
-      this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
-      this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
-      this.tableLayoutPanel5.Controls.Add(this.textBox7, 0, 0);
-      this.tableLayoutPanel5.Controls.Add(this.button4, 1, 0);
+      this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 65F));
+      this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35F));
+      this.tableLayoutPanel5.Controls.Add(this.txtKodeMandarin, 0, 0);
+      this.tableLayoutPanel5.Controls.Add(this.btnKonversi, 1, 0);
       this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.tableLayoutPanel5.Location = new System.Drawing.Point(195, 278);
+      this.tableLayoutPanel5.Location = new System.Drawing.Point(170, 180);
+      this.tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(0);
       this.tableLayoutPanel5.Name = "tableLayoutPanel5";
       this.tableLayoutPanel5.RowCount = 1;
       this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-      this.tableLayoutPanel5.Size = new System.Drawing.Size(351, 49);
-      this.tableLayoutPanel5.TabIndex = 12;
+      this.tableLayoutPanel5.Size = new System.Drawing.Size(316, 45);
+      this.tableLayoutPanel5.TabIndex = 19;
       // 
-      // textBox7
+      // txtKodeMandarin
       // 
-      this.textBox7.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.textBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.textBox7.Location = new System.Drawing.Point(3, 3);
-      this.textBox7.Name = "textBox7";
-      this.textBox7.Size = new System.Drawing.Size(239, 44);
-      this.textBox7.TabIndex = 11;
+      this.txtKodeMandarin.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.txtKodeMandarin.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.txtKodeMandarin.Location = new System.Drawing.Point(3, 3);
+      this.txtKodeMandarin.Name = "txtKodeMandarin";
+      this.txtKodeMandarin.Size = new System.Drawing.Size(199, 38);
+      this.txtKodeMandarin.TabIndex = 0;
       // 
-      // button4
+      // btnKonversi
       // 
-      this.button4.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.button4.Location = new System.Drawing.Point(248, 3);
-      this.button4.Name = "button4";
-      this.button4.Size = new System.Drawing.Size(100, 43);
-      this.button4.TabIndex = 12;
-      this.button4.Text = "Konversi";
-      this.button4.UseVisualStyleBackColor = true;
+      this.btnKonversi.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.btnKonversi.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.btnKonversi.Location = new System.Drawing.Point(208, 3);
+      this.btnKonversi.Name = "btnKonversi";
+      this.btnKonversi.Size = new System.Drawing.Size(105, 39);
+      this.btnKonversi.TabIndex = 1;
+      this.btnKonversi.Text = "KONVERSI";
+      this.btnKonversi.UseVisualStyleBackColor = true;
+      this.btnKonversi.Click += new System.EventHandler(this.btnKonversi_Click);
       // 
-      // numericUpDown1
+      // numJumlahBarang
       // 
-      this.numericUpDown1.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.numericUpDown1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.numericUpDown1.Location = new System.Drawing.Point(195, 333);
-      this.numericUpDown1.Name = "numericUpDown1";
-      this.numericUpDown1.Size = new System.Drawing.Size(351, 44);
-      this.numericUpDown1.TabIndex = 14;
+      this.numJumlahBarang.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.numJumlahBarang.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.numJumlahBarang.Location = new System.Drawing.Point(173, 273);
+      this.numJumlahBarang.Name = "numJumlahBarang";
+      this.numJumlahBarang.Size = new System.Drawing.Size(310, 38);
+      this.numJumlahBarang.TabIndex = 23;
+      // 
+      // txtId
+      // 
+      this.txtId.Location = new System.Drawing.Point(3, 363);
+      this.txtId.Name = "txtId";
+      this.txtId.Size = new System.Drawing.Size(100, 20);
+      this.txtId.TabIndex = 26;
       // 
       // frmMain
       // 
@@ -513,10 +608,12 @@
       this.tableLayoutPanel3.PerformLayout();
       this.tableLayoutPanel4.ResumeLayout(false);
       this.tableLayoutPanel4.PerformLayout();
-      ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
+      ((System.ComponentModel.ISupportInitialize)(this.numJumlahCetak)).EndInit();
+      this.tableLayoutPanel6.ResumeLayout(false);
+      this.tableLayoutPanel7.ResumeLayout(false);
       this.tableLayoutPanel5.ResumeLayout(false);
       this.tableLayoutPanel5.PerformLayout();
-      ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+      ((System.ComponentModel.ISupportInitialize)(this.numJumlahBarang)).EndInit();
       this.ResumeLayout(false);
 
     }
@@ -529,32 +626,39 @@
     private System.Windows.Forms.TableLayoutPanel tblLayoutMain;
     private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
     private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-    private System.Windows.Forms.Button button1;
-    private System.Windows.Forms.TextBox textBox1;
-    private System.Windows.Forms.Button button2;
-    private System.Windows.Forms.Button button3;
+    private System.Windows.Forms.Button btnTambah;
+    private System.Windows.Forms.TextBox txtCari;
+    private System.Windows.Forms.Button btnCari;
+    private System.Windows.Forms.Button btnResetCari;
     private System.Windows.Forms.DataGridView dg;
     private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
     private System.Windows.Forms.Label label2;
     private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
     private System.Windows.Forms.Label label3;
-    private System.Windows.Forms.TextBox textBox2;
+    private System.Windows.Forms.TextBox txtAsalBarang;
     private System.Windows.Forms.Label label7;
-    private System.Windows.Forms.TextBox textBox5;
+    private System.Windows.Forms.TextBox txtKodeJual;
     private System.Windows.Forms.Label label6;
-    private System.Windows.Forms.TextBox textBox4;
+    private System.Windows.Forms.TextBox txtTipeMobil;
     private System.Windows.Forms.Label label5;
-    private System.Windows.Forms.TextBox textBox3;
+    private System.Windows.Forms.TextBox txtNamaBarang;
     private System.Windows.Forms.Label label4;
-    private System.Windows.Forms.Label label8;
-    private System.Windows.Forms.TextBox textBox6;
+    private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
+    private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
     private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
-    private System.Windows.Forms.TextBox textBox7;
-    private System.Windows.Forms.Button button4;
+    private System.Windows.Forms.TextBox txtKodeMandarin;
+    private System.Windows.Forms.Button btnKonversi;
     private System.Windows.Forms.Label label9;
-    private System.Windows.Forms.NumericUpDown numericUpDown1;
-    private System.Windows.Forms.NumericUpDown numericUpDown2;
+    private System.Windows.Forms.TextBox txtHurufMandarin;
+    private System.Windows.Forms.Label label8;
+    private System.Windows.Forms.NumericUpDown numJumlahCetak;
     private System.Windows.Forms.Label label10;
+    private System.Windows.Forms.NumericUpDown numJumlahBarang;
+    private System.Windows.Forms.Button btnSimpan;
+    private System.Windows.Forms.Button btnCetak;
+    private System.Windows.Forms.Button btnReset;
+    private System.Windows.Forms.Button btnHapus;
+    private System.Windows.Forms.TextBox txtId;
   }
 }
 
