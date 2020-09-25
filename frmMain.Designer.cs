@@ -198,6 +198,7 @@
       this.btnCari.TabIndex = 2;
       this.btnCari.Text = "Cari";
       this.btnCari.UseVisualStyleBackColor = true;
+      this.btnCari.Click += new System.EventHandler(this.btnCari_Click);
       // 
       // btnResetCari
       // 
@@ -209,6 +210,7 @@
       this.btnResetCari.TabIndex = 3;
       this.btnResetCari.Text = "Reset";
       this.btnResetCari.UseVisualStyleBackColor = true;
+      this.btnResetCari.Click += new System.EventHandler(this.btnResetCari_Click);
       // 
       // dg
       // 
@@ -236,10 +238,14 @@
       this.dg.DefaultCellStyle = dataGridViewCellStyle2;
       this.dg.Dock = System.Windows.Forms.DockStyle.Fill;
       this.dg.Location = new System.Drawing.Point(3, 53);
+      this.dg.MultiSelect = false;
       this.dg.Name = "dg";
+      this.dg.ReadOnly = true;
       this.dg.RowHeadersVisible = false;
       this.dg.Size = new System.Drawing.Size(735, 508);
       this.dg.TabIndex = 1;
+      this.dg.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dg_CellClick);
+      this.dg.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dg_CellDoubleClick);
       // 
       // tableLayoutPanel3
       // 
@@ -478,21 +484,25 @@
       // 
       // btnSimpan
       // 
+      this.btnSimpan.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.btnSimpan.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.btnSimpan.Location = new System.Drawing.Point(3, 3);
       this.btnSimpan.Name = "btnSimpan";
-      this.btnSimpan.Size = new System.Drawing.Size(75, 23);
+      this.btnSimpan.Size = new System.Drawing.Size(152, 39);
       this.btnSimpan.TabIndex = 0;
-      this.btnSimpan.Text = "button2";
+      this.btnSimpan.Text = "SIMPAN";
       this.btnSimpan.UseVisualStyleBackColor = true;
       this.btnSimpan.Click += new System.EventHandler(this.btnSimpan_Click);
       // 
       // btnCetak
       // 
+      this.btnCetak.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.btnCetak.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.btnCetak.Location = new System.Drawing.Point(161, 3);
       this.btnCetak.Name = "btnCetak";
-      this.btnCetak.Size = new System.Drawing.Size(75, 23);
+      this.btnCetak.Size = new System.Drawing.Size(152, 39);
       this.btnCetak.TabIndex = 1;
-      this.btnCetak.Text = "button3";
+      this.btnCetak.Text = "CETAK";
       this.btnCetak.UseVisualStyleBackColor = true;
       this.btnCetak.Click += new System.EventHandler(this.btnCetak_Click);
       // 
@@ -514,21 +524,25 @@
       // 
       // btnReset
       // 
+      this.btnReset.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.btnReset.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.btnReset.Location = new System.Drawing.Point(3, 3);
       this.btnReset.Name = "btnReset";
-      this.btnReset.Size = new System.Drawing.Size(75, 23);
+      this.btnReset.Size = new System.Drawing.Size(152, 39);
       this.btnReset.TabIndex = 0;
-      this.btnReset.Text = "button4";
+      this.btnReset.Text = "RESET";
       this.btnReset.UseVisualStyleBackColor = true;
       this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
       // 
       // btnHapus
       // 
+      this.btnHapus.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.btnHapus.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.btnHapus.Location = new System.Drawing.Point(161, 3);
       this.btnHapus.Name = "btnHapus";
-      this.btnHapus.Size = new System.Drawing.Size(75, 23);
+      this.btnHapus.Size = new System.Drawing.Size(152, 39);
       this.btnHapus.TabIndex = 1;
-      this.btnHapus.Text = "button5";
+      this.btnHapus.Text = "HAPUS";
       this.btnHapus.UseVisualStyleBackColor = true;
       this.btnHapus.Click += new System.EventHandler(this.btnHapus_Click);
       // 
@@ -584,6 +598,7 @@
       this.txtId.Name = "txtId";
       this.txtId.Size = new System.Drawing.Size(100, 20);
       this.txtId.TabIndex = 26;
+      this.txtId.Visible = false;
       // 
       // frmMain
       // 
