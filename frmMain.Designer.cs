@@ -323,7 +323,8 @@
       this.numJumlahCetak.Location = new System.Drawing.Point(173, 318);
       this.numJumlahCetak.Name = "numJumlahCetak";
       this.numJumlahCetak.Size = new System.Drawing.Size(310, 38);
-      this.numJumlahCetak.TabIndex = 25;
+      this.numJumlahCetak.TabIndex = 18;
+      this.numJumlahCetak.KeyDown += new System.Windows.Forms.KeyEventHandler(this.numJumlahCetak_KeyDown);
       // 
       // label10
       // 
@@ -333,8 +334,8 @@
       this.label10.Location = new System.Drawing.Point(3, 315);
       this.label10.Name = "label10";
       this.label10.Size = new System.Drawing.Size(164, 45);
-      this.label10.TabIndex = 24;
-      this.label10.Text = "Kode Mandarin";
+      this.label10.TabIndex = 17;
+      this.label10.Text = "Jumlah Cetak";
       this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
       // 
       // label9
@@ -345,8 +346,8 @@
       this.label9.Location = new System.Drawing.Point(3, 270);
       this.label9.Name = "label9";
       this.label9.Size = new System.Drawing.Size(164, 45);
-      this.label9.TabIndex = 22;
-      this.label9.Text = "Kode Mandarin";
+      this.label9.TabIndex = 15;
+      this.label9.Text = "Jumlah Barang";
       this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
       // 
       // txtHurufMandarin
@@ -356,7 +357,8 @@
       this.txtHurufMandarin.Location = new System.Drawing.Point(173, 228);
       this.txtHurufMandarin.Name = "txtHurufMandarin";
       this.txtHurufMandarin.Size = new System.Drawing.Size(310, 38);
-      this.txtHurufMandarin.TabIndex = 21;
+      this.txtHurufMandarin.TabIndex = 14;
+      this.txtHurufMandarin.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtHurufMandarin_KeyDown);
       // 
       // label8
       // 
@@ -366,7 +368,7 @@
       this.label8.Location = new System.Drawing.Point(3, 225);
       this.label8.Name = "label8";
       this.label8.Size = new System.Drawing.Size(164, 45);
-      this.label8.TabIndex = 20;
+      this.label8.TabIndex = 13;
       this.label8.Text = "Huruf Mandarin";
       this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
       // 
@@ -390,6 +392,7 @@
       this.txtKodeJual.Name = "txtKodeJual";
       this.txtKodeJual.Size = new System.Drawing.Size(310, 38);
       this.txtKodeJual.TabIndex = 8;
+      this.txtKodeJual.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtKodeJual_KeyDown);
       // 
       // label6
       // 
@@ -411,6 +414,7 @@
       this.txtTipeMobil.Name = "txtTipeMobil";
       this.txtTipeMobil.Size = new System.Drawing.Size(310, 38);
       this.txtTipeMobil.TabIndex = 6;
+      this.txtTipeMobil.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtTipeMobil_KeyDown);
       // 
       // label5
       // 
@@ -432,6 +436,7 @@
       this.txtNamaBarang.Name = "txtNamaBarang";
       this.txtNamaBarang.Size = new System.Drawing.Size(310, 38);
       this.txtNamaBarang.TabIndex = 4;
+      this.txtNamaBarang.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtNamaBarang_KeyDown);
       // 
       // label4
       // 
@@ -465,6 +470,7 @@
       this.txtAsalBarang.Name = "txtAsalBarang";
       this.txtAsalBarang.Size = new System.Drawing.Size(310, 38);
       this.txtAsalBarang.TabIndex = 2;
+      this.txtAsalBarang.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtAsalBarang_KeyDown);
       // 
       // tableLayoutPanel6
       // 
@@ -480,7 +486,7 @@
       this.tableLayoutPanel6.RowCount = 1;
       this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
       this.tableLayoutPanel6.Size = new System.Drawing.Size(316, 45);
-      this.tableLayoutPanel6.TabIndex = 17;
+      this.tableLayoutPanel6.TabIndex = 19;
       // 
       // btnSimpan
       // 
@@ -520,7 +526,7 @@
       this.tableLayoutPanel7.RowCount = 1;
       this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
       this.tableLayoutPanel7.Size = new System.Drawing.Size(316, 45);
-      this.tableLayoutPanel7.TabIndex = 18;
+      this.tableLayoutPanel7.TabIndex = 20;
       // 
       // btnReset
       // 
@@ -560,7 +566,7 @@
       this.tableLayoutPanel5.RowCount = 1;
       this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
       this.tableLayoutPanel5.Size = new System.Drawing.Size(316, 45);
-      this.tableLayoutPanel5.TabIndex = 19;
+      this.tableLayoutPanel5.TabIndex = 10;
       // 
       // txtKodeMandarin
       // 
@@ -569,7 +575,8 @@
       this.txtKodeMandarin.Location = new System.Drawing.Point(3, 3);
       this.txtKodeMandarin.Name = "txtKodeMandarin";
       this.txtKodeMandarin.Size = new System.Drawing.Size(199, 38);
-      this.txtKodeMandarin.TabIndex = 0;
+      this.txtKodeMandarin.TabIndex = 11;
+      this.txtKodeMandarin.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtKodeMandarin_KeyDown);
       // 
       // btnKonversi
       // 
@@ -578,7 +585,7 @@
       this.btnKonversi.Location = new System.Drawing.Point(208, 3);
       this.btnKonversi.Name = "btnKonversi";
       this.btnKonversi.Size = new System.Drawing.Size(105, 39);
-      this.btnKonversi.TabIndex = 1;
+      this.btnKonversi.TabIndex = 12;
       this.btnKonversi.Text = "KONVERSI";
       this.btnKonversi.UseVisualStyleBackColor = true;
       this.btnKonversi.Click += new System.EventHandler(this.btnKonversi_Click);
@@ -590,7 +597,8 @@
       this.numJumlahBarang.Location = new System.Drawing.Point(173, 273);
       this.numJumlahBarang.Name = "numJumlahBarang";
       this.numJumlahBarang.Size = new System.Drawing.Size(310, 38);
-      this.numJumlahBarang.TabIndex = 23;
+      this.numJumlahBarang.TabIndex = 16;
+      this.numJumlahBarang.KeyDown += new System.Windows.Forms.KeyEventHandler(this.numJumlahBarang_KeyDown);
       // 
       // txtId
       // 

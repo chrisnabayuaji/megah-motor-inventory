@@ -308,7 +308,10 @@ namespace Megah_Motor_Inventory
       DialogResult result = MessageBox.Show("Apakah Anda yakin mencetak data ini?\n", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
       if (result == DialogResult.Yes)
       {
-        print_data();
+        for(int i = 0; i < numJumlahCetak.Value; i++)
+        {
+          print_data();
+        }
       }
     }
 
@@ -344,15 +347,23 @@ namespace Megah_Motor_Inventory
     private void dg_CellClick(object sender, DataGridViewCellEventArgs e)
     {
       int i = e.RowIndex;
-      dg.Rows[i].Selected = true;
+      Console.WriteLine(i);
+      if(i > -1)
+      {
+        dg.Rows[i].Selected = true;
+      }
     }
 
     private void dg_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
     {
       int i = e.RowIndex;
-      dg.Rows[i].Selected = true;
-      String id = dg.Rows[i].Cells[0].Value.ToString();
-      edit_data(id);
+      dg.Rows[i].Selected = true; 
+      if (i > -1)
+      {
+        String id = dg.Rows[i].Cells[0].Value.ToString();
+        edit_data(id);
+      }
+      
     }
 
     private void edit_data(String id)
@@ -416,7 +427,7 @@ namespace Megah_Motor_Inventory
       try 
       {
         string settings = System.IO.File.ReadAllText("./settings.txt");
-        var thePrinterConn = ConnectionBuilder.Build("USB:"+settings);
+        var thePrinterConn = ConnectionBuilder.Build(settings);
         try
         {
           // Open the connection - physical connection is established here.
@@ -425,25 +436,26 @@ namespace Megah_Motor_Inventory
           // This example prints "This is a ZPL test." near the top of the label.
           string zplData = "^XA" +
             //item id
-            "^FO00,22^A0,38,26^FD" + id + "^FS" +
-            "^FO290,22^A0,38,26^FD" + id + "^FS" +
-            "^FO580,22^A0,38,26^FD" + id + "^FS" +
+            "^FO010,25^A0,40,26^FD" + kodeJual + "^FS" +
+            //"^FO290,22^A0,38,26^FD" + kodeJual + "^FS" +
+            //"^FO580,22^A0,38,26^FD" + kodeJual + "^FS" +
             //item name 1
-            "^FO00,55^A0,30,22^FD" + asalBarang + "^FS" +
-            "^FO290,55^A0,30,22^FD" + asalBarang + "^FS" +
-            "^FO580,55^A0,30,22^FD" + asalBarang + "^FS" +
+            "^FO010,65^A0,40,26^FD" + asalBarang + "^FS" +
+            //"^FO290,55^A0,30,22^FD" + asalBarang + "^FS" +
+            //"^FO580,55^A0,30,22^FD" + asalBarang + "^FS" +
             //item name 2
-            "^FO00,82^A0,30,22^FD" + namaBarang + "^FS" +
-            "^FO290,82^A0,30,22^FD" + namaBarang + "^FS" +
-            "^FO580,82^A0,30,22^FD" + namaBarang + "^FS" +
+            "^FO010,105^A0,40,26^FD" + namaBarang + "^FS" +
+            //"^FO290,82^A0,30,22^FD" + namaBarang + "^FS" +
+            //"^FO580,82^A0,30,22^FD" + namaBarang + "^FS" +
             //item name 3
-            "^FO00,108^A0,30,22^FD" + tipeMobil + "^FS" +
-            "^FO290,108^A0,30,22^FD" + tipeMobil + "^FS" +
-            "^FO580,108^A0,30,22^FD" + tipeMobil + "^FS" +
+            "^FO010,148^A0,40,26^FD" + tipeMobil + "^FS" +
+            //"^FO290,108^A0,30,22^FD" + tipeMobil + "^FS" +
+            //"^FO580,108^A0,30,22^FD" + tipeMobil + "^FS" +
             //item chinese
-            "^FO00,138^CI28^A@N,40,40,E:SIMSUN.FNT^FD" + hurufMandarin + "^FS" +
-            "^FO290,138^CI28^A@N,40,40,E:SIMSUN.FNT^FD" + hurufMandarin + "^FS" +
-            "^FO580,138^CI28^A@N,40,40,E:SIMSUN.FNT^FD" + hurufMandarin + "^FS" +
+            "^FO010,188^CI28^A@N,36,36,E:SIMSUN.FNT^FD" + hurufMandarin + "^FS" +
+            //"^FO290,138^CI28^A@N,40,40,E:SIMSUN.FNT^FD" + hurufMandarin + "^FS" +
+            //"^FO580,138^CI28^A@N,40,40,E:SIMSUN.FNT^FD" + hurufMandarin + "^FS" +
+            "^FO010,250^B3N,N,100,Y,N^FD" + kodeJual + "^FS" +
             "^XZ";
 
           // Send the data to printer as a byte array.
@@ -453,6 +465,7 @@ namespace Megah_Motor_Inventory
         {
           // Handle communications error here.
           Console.WriteLine(e.ToString());
+          MessageBox.Show(e.ToString(), "Gagal", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
         finally
         {
@@ -463,6 +476,70 @@ namespace Megah_Motor_Inventory
       catch(Exception e)
       {
         MessageBox.Show(e.ToString(), "Gagal", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+      }
+    }
+
+    private void txtAsalBarang_KeyDown(object sender, KeyEventArgs e)
+    {
+      if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+      {
+        txtNamaBarang.Focus();
+      }
+    }
+
+    private void txtNamaBarang_KeyDown(object sender, KeyEventArgs e)
+    {
+      if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+      {
+        txtTipeMobil.Focus();
+      }
+    }
+
+    private void txtTipeMobil_KeyDown(object sender, KeyEventArgs e)
+    {
+      if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+      {
+        txtKodeJual.Focus();
+      }
+    }
+
+    private void txtKodeJual_KeyDown(object sender, KeyEventArgs e)
+    {
+      if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+      {
+        txtKodeMandarin.Focus();
+      }
+    }
+
+    private void txtKodeMandarin_KeyDown(object sender, KeyEventArgs e)
+    {
+      if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+      {
+        txtHurufMandarin.Focus();
+      }
+    }
+
+    private void txtHurufMandarin_KeyDown(object sender, KeyEventArgs e)
+    {
+      if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+      {
+        numJumlahBarang.Focus();
+      }
+    }
+
+    private void numJumlahBarang_KeyDown(object sender, KeyEventArgs e)
+    {
+      if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+      {
+        numJumlahCetak.Focus();
+      }
+    }
+
+    private void numJumlahCetak_KeyDown(object sender, KeyEventArgs e)
+    {
+      if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+      {
+        btnCetak.Focus();
       }
     }
   }
