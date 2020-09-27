@@ -357,9 +357,9 @@ namespace Megah_Motor_Inventory
     private void dg_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
     {
       int i = e.RowIndex;
-      dg.Rows[i].Selected = true; 
       if (i > -1)
       {
+        dg.Rows[i].Selected = true;
         String id = dg.Rows[i].Cells[0].Value.ToString();
         edit_data(id);
       }
@@ -436,26 +436,26 @@ namespace Megah_Motor_Inventory
           // This example prints "This is a ZPL test." near the top of the label.
           string zplData = "^XA" +
             //item id
-            "^FO010,25^A0,40,26^FD" + kodeJual + "^FS" +
+            "^FO200,25^A0,55,40^FD" + kodeJual + "^FS" +
             //"^FO290,22^A0,38,26^FD" + kodeJual + "^FS" +
             //"^FO580,22^A0,38,26^FD" + kodeJual + "^FS" +
             //item name 1
-            "^FO010,65^A0,40,26^FD" + asalBarang + "^FS" +
+            "^FO200,75^A0,55,40^FD" + asalBarang + "^FS" +
             //"^FO290,55^A0,30,22^FD" + asalBarang + "^FS" +
             //"^FO580,55^A0,30,22^FD" + asalBarang + "^FS" +
             //item name 2
-            "^FO010,105^A0,40,26^FD" + namaBarang + "^FS" +
+            "^FO200,125^A0,55,40^FD" + namaBarang + "^FS" +
             //"^FO290,82^A0,30,22^FD" + namaBarang + "^FS" +
             //"^FO580,82^A0,30,22^FD" + namaBarang + "^FS" +
             //item name 3
-            "^FO010,148^A0,40,26^FD" + tipeMobil + "^FS" +
+            "^FO200,175^A0,55,40^FD" + tipeMobil + "^FS" +
             //"^FO290,108^A0,30,22^FD" + tipeMobil + "^FS" +
             //"^FO580,108^A0,30,22^FD" + tipeMobil + "^FS" +
             //item chinese
-            "^FO010,188^CI28^A@N,36,36,E:SIMSUN.FNT^FD" + hurufMandarin + "^FS" +
+            "^FO200,225^CI28^A@N,36,36,E:SIMSUN.FNT^FD" + hurufMandarin + "^FS" +
             //"^FO290,138^CI28^A@N,40,40,E:SIMSUN.FNT^FD" + hurufMandarin + "^FS" +
             //"^FO580,138^CI28^A@N,40,40,E:SIMSUN.FNT^FD" + hurufMandarin + "^FS" +
-            "^FO010,250^B3N,N,100,Y,N^FD" + kodeJual + "^FS" +
+            "^FO200,295^B3N,N,50,Y,N^FD" + kodeJual + "^FS" +
             "^XZ";
 
           // Send the data to printer as a byte array.
