@@ -1,9 +1,11 @@
-﻿using System;
+﻿using Microsoft.VisualBasic;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.OleDb;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,6 +23,7 @@ namespace Megah_Motor_Inventory
       initialize_dg();
       reset_item();
       show_data();
+      show_pengurangan();
     }
 
     private void initialize_dg()
@@ -84,7 +87,15 @@ namespace Megah_Motor_Inventory
 
     private void btnSimpan_Click(object sender, EventArgs e)
     {
-      simpan();
+      var input = 0;
+      if (int.TryParse(txtKodeMandarin.Text, out input) && int.TryParse(txtJumlahBarang.Text, out input))
+      {
+        simpan();
+      }
+      else
+      {
+        MessageBox.Show("Kode mandarin dan jumlah barang harus berupa angka!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+      }
     }
 
     private void reset_item() {
@@ -99,18 +110,17 @@ namespace Megah_Motor_Inventory
       txtKodeJual.Enabled = false;
       txtKodeMandarin.Text = "";
       txtKodeMandarin.Enabled = false;
-      txtHurufMandarin.Text = "";
-      txtHurufMandarin.Enabled = false;
-      numJumlahBarang.Value = 0;
-      numJumlahBarang.Enabled = false;
-      numJumlahCetak.Value = 0;
-      numJumlahCetak.Enabled = false;
+      txtJumlahBarang.Text = "";
+      txtJumlahBarang.Enabled = false;
+      txtJumlahBarang.Text = "";
+      txtJumlahBarang.Enabled = false;
+      txtJumlahCetak.Text = "";
+      txtJumlahCetak.Enabled = false;
 
       btnSimpan.Enabled = false;
       btnCetak.Enabled = false;
       btnReset.Enabled = false;
       btnHapus.Enabled = false;
-      btnKonversi.Enabled = false;
     }
 
     private void enable_item() {
@@ -119,15 +129,14 @@ namespace Megah_Motor_Inventory
       txtTipeMobil.Enabled = true;
       txtKodeJual.Enabled = true;
       txtKodeMandarin.Enabled = true;
-      txtHurufMandarin.Enabled = true;
-      numJumlahBarang.Enabled = true;
-      numJumlahCetak.Enabled = true;
+      txtJumlahBarang.Enabled = true;
+      txtJumlahBarang.Enabled = true;
+      txtJumlahCetak.Enabled = true;
 
       btnSimpan.Enabled = true;
       btnCetak.Enabled = true;
       btnReset.Enabled = true;
       btnHapus.Enabled = true;
-      btnKonversi.Enabled = true;
     }
 
     private void show_data() {
@@ -177,10 +186,9 @@ namespace Megah_Motor_Inventory
       String tipeMobil = txtTipeMobil.Text.Replace("'", "''");
       String kodeJual = txtKodeJual.Text.Replace("'", "''");
       String kodeMandarin = txtKodeMandarin.Text.Replace("'", "''");
-      String hurufMandarin = txtHurufMandarin.Text.Replace("'", "''");
-      String jumlahBarang = numJumlahBarang.Value.ToString();
+      String jumlahBarang = txtJumlahBarang.Text.Replace("'", "''");
 
-      if (asalBarang == "" || namaBarang == "" || tipeMobil == "" || kodeJual == "" || hurufMandarin == "")
+      if (asalBarang == "" || namaBarang == "" || tipeMobil == "" || kodeJual == "" || kodeMandarin == "")
       {
         MessageBox.Show("Semua kolom tidak boleh kosong", "Gagal", MessageBoxButtons.OK, MessageBoxIcon.Warning);
       }
@@ -201,13 +209,13 @@ namespace Megah_Motor_Inventory
             cmd.Parameters.AddWithValue("@tipeMobil", tipeMobil);
             cmd.Parameters.AddWithValue("@kodeJual", kodeJual);
             cmd.Parameters.AddWithValue("@kodeMandarin", kodeMandarin);
-            cmd.Parameters.AddWithValue("@hurufMandarin", hurufMandarin);
+            cmd.Parameters.AddWithValue("@hurufMandarin", angka_cina(int.Parse(kodeMandarin)));
             cmd.Parameters.AddWithValue("@jumlahBarang", jumlahBarang);
             cmd.Connection = conn;
 
             cmd.ExecuteNonQuery();
             conn.Close();
-            MessageBox.Show("Data berhasil disimpan", "Berhasil", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //MessageBox.Show("Data berhasil disimpan", "Berhasil", MessageBoxButtons.OK, MessageBoxIcon.Information);
             reset_item();
           }
           catch (Exception ex)
@@ -230,14 +238,14 @@ namespace Megah_Motor_Inventory
             cmd.Parameters.AddWithValue("@tipeMobil", tipeMobil);
             cmd.Parameters.AddWithValue("@kodeJual", kodeJual);
             cmd.Parameters.AddWithValue("@kodeMandarin", kodeMandarin);
-            cmd.Parameters.AddWithValue("@hurufMandarin", hurufMandarin);
+            cmd.Parameters.AddWithValue("@hurufMandarin", angka_cina(int.Parse(kodeMandarin)));
             cmd.Parameters.AddWithValue("@jumlahBarang", jumlahBarang);
             cmd.Parameters.AddWithValue("@id", id);
             cmd.Connection = conn;
 
             cmd.ExecuteNonQuery();
             conn.Close();
-            MessageBox.Show("Data berhasil disimpan", "Berhasil", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //MessageBox.Show("Data berhasil disimpan", "Berhasil", MessageBoxButtons.OK, MessageBoxIcon.Information);
             reset_item();
           }
           catch (Exception ex)
@@ -261,46 +269,18 @@ namespace Megah_Motor_Inventory
       btnHapus.Enabled = false;
     }
 
-    private String angkaCina(int angka)
+    private String angka_cina(int angka)
     {
-      String[] digits = { "零", "一", "二", "三", "四", "五", "六", "七", "八", "九" };
-      String[] positions = { "", "十", "百", "千", "万", "十万", "百万", "千万", "亿", "十亿", "百亿", "千亿" };
+      String[] digits = { "冬", "元", "月", "东", "西", "南", "北", "車", "來", "財" };
       Char[] charArray = angka.ToString().ToCharArray();
       String result = "";
-      bool prevIsZero = false;
 
       for (int i = 0; i < charArray.Length; i++)
       {
         Char ch = charArray[i];
-        if (ch != '0' && !prevIsZero)
-        {
-          result += digits[(int)Char.GetNumericValue(ch)] + positions[charArray.Length - i - 1];
-        }
-        else if (ch == '0')
-        {
-          prevIsZero = true;
-        }
-        else if (ch != '0' && prevIsZero)
-        {
-          result += '零' + digits[(int)Char.GetNumericValue(ch)] + positions[charArray.Length - i - 1];
-        };
-
+        result += digits[(int)Char.GetNumericValue(ch)];
       }
       return result;
-    }
-
-    private void btnKonversi_Click(object sender, EventArgs e)
-    {
-      String kodeMandarin = txtKodeMandarin.Text;
-      int value;
-      if (int.TryParse(kodeMandarin, out value))
-      {
-        txtHurufMandarin.Text = angkaCina(int.Parse(kodeMandarin));
-      }
-      else
-      {
-        MessageBox.Show("Konversi hanya berupa angka!", "Kesalahan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-      }
     }
 
     private void btnCetak_Click(object sender, EventArgs e)
@@ -308,9 +288,20 @@ namespace Megah_Motor_Inventory
       DialogResult result = MessageBox.Show("Apakah Anda yakin mencetak data ini?\n", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
       if (result == DialogResult.Yes)
       {
-        for(int i = 0; i < numJumlahCetak.Value; i++)
+        var input = 0;
+        if (int.TryParse(txtKodeMandarin.Text, out input) && int.TryParse(txtJumlahBarang.Text, out input) && int.TryParse(txtJumlahCetak.Text, out input))
         {
-          print_data();
+          for (int i = 0; i < int.Parse(txtJumlahCetak.Text); i++)
+          {
+            print_data();
+          }
+          String id = txtId.Text;
+          simpan();
+          edit_data(id);
+        }
+        else
+        {
+          MessageBox.Show("Kode mandarin, jumlah barang, dan jumlah cetak harus berupa angka!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
       }
     }
@@ -333,7 +324,7 @@ namespace Megah_Motor_Inventory
 
           cmd.ExecuteNonQuery();
           conn.Close();
-          MessageBox.Show("Data berhasil disimpan", "Berhasil", MessageBoxButtons.OK, MessageBoxIcon.Information);
+          MessageBox.Show("Data berhasil dihapus", "Berhasil", MessageBoxButtons.OK, MessageBoxIcon.Information);
           reset_item();
         }
         catch (Exception ex)
@@ -390,8 +381,7 @@ namespace Megah_Motor_Inventory
             txtTipeMobil.Text = reader["tipe_mobil"].ToString();
             txtKodeJual.Text = reader["kode_jual"].ToString();
             txtKodeMandarin.Text = reader["kode_mandarin"].ToString();
-            txtHurufMandarin.Text = reader["huruf_mandarin"].ToString();
-            numJumlahBarang.Value = int.Parse(reader["jumlah_barang"].ToString());
+            txtJumlahBarang.Text = reader["jumlah_barang"].ToString();
           }
         }
         reader.Close();
@@ -422,12 +412,12 @@ namespace Megah_Motor_Inventory
       String tipeMobil = txtTipeMobil.Text.Replace("'", "''");
       String kodeJual = txtKodeJual.Text.Replace("'", "''");
       String kodeMandarin = txtKodeMandarin.Text.Replace("'", "''");
-      String hurufMandarin = txtHurufMandarin.Text.Replace("'", "''");
-      String jumlahBarang = numJumlahBarang.Value.ToString();
+      String hurufMandarin = angka_cina(int.Parse(kodeMandarin));
+     //String jumlahBarang = numJumlahBarang.Value.ToString();
       try 
       {
-        string settings = System.IO.File.ReadAllText("./settings.txt");
-        var thePrinterConn = ConnectionBuilder.Build(settings);
+        //string settings = System.IO.File.ReadAllText("./settings.txt");
+        var thePrinterConn = ConnectionBuilder.Build("ZDesigner GT800 (ZPL) (Inventory)");
         try
         {
           // Open the connection - physical connection is established here.
@@ -436,26 +426,26 @@ namespace Megah_Motor_Inventory
           // This example prints "This is a ZPL test." near the top of the label.
           string zplData = "^XA" +
             //item id
-            "^FO200,25^A0,55,40^FD" + kodeJual + "^FS" +
+            "^FO150,25^A0,55,40^FD" + asalBarang + "^FS" +
             //"^FO290,22^A0,38,26^FD" + kodeJual + "^FS" +
             //"^FO580,22^A0,38,26^FD" + kodeJual + "^FS" +
             //item name 1
-            "^FO200,75^A0,55,40^FD" + asalBarang + "^FS" +
+            "^FO150,75^A0,55,40^FD" + namaBarang + "^FS" +
             //"^FO290,55^A0,30,22^FD" + asalBarang + "^FS" +
             //"^FO580,55^A0,30,22^FD" + asalBarang + "^FS" +
             //item name 2
-            "^FO200,125^A0,55,40^FD" + namaBarang + "^FS" +
+            "^FO150,125^A0,55,40^FD" + tipeMobil + "^FS" +
             //"^FO290,82^A0,30,22^FD" + namaBarang + "^FS" +
             //"^FO580,82^A0,30,22^FD" + namaBarang + "^FS" +
             //item name 3
-            "^FO200,175^A0,55,40^FD" + tipeMobil + "^FS" +
+            "^FO150,175^A0,55,40^FD" + kodeJual + "^FS" +
             //"^FO290,108^A0,30,22^FD" + tipeMobil + "^FS" +
             //"^FO580,108^A0,30,22^FD" + tipeMobil + "^FS" +
             //item chinese
-            "^FO200,225^CI28^A@N,36,36,E:SIMSUN.FNT^FD" + hurufMandarin + "^FS" +
+            "^FO150,225^CI28^A@N,36,36,E:SIMSUN.FNT^FD" + hurufMandarin + "^FS" +
             //"^FO290,138^CI28^A@N,40,40,E:SIMSUN.FNT^FD" + hurufMandarin + "^FS" +
             //"^FO580,138^CI28^A@N,40,40,E:SIMSUN.FNT^FD" + hurufMandarin + "^FS" +
-            "^FO200,295^B3N,N,50,Y,N^FD" + kodeJual + "^FS" +
+            "^FO10,295^B3N,N,50,Y,N^FD" + kodeJual + "^FS" +
             "^XZ";
 
           // Send the data to printer as a byte array.
@@ -481,7 +471,7 @@ namespace Megah_Motor_Inventory
 
     private void txtAsalBarang_KeyDown(object sender, KeyEventArgs e)
     {
-      if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+      if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab || e.KeyCode == Keys.Down)
       {
         txtNamaBarang.Focus();
       }
@@ -489,7 +479,16 @@ namespace Megah_Motor_Inventory
 
     private void txtNamaBarang_KeyDown(object sender, KeyEventArgs e)
     {
-      if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+      if (e.KeyCode == Keys.Escape)
+      {
+        txtAsalBarang.Text = "";
+        txtAsalBarang.Focus();
+      }
+      if (e.KeyCode == Keys.Up)
+      {
+        txtAsalBarang.Focus();
+      }
+      if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab || e.KeyCode == Keys.Down)
       {
         txtTipeMobil.Focus();
       }
@@ -497,7 +496,11 @@ namespace Megah_Motor_Inventory
 
     private void txtTipeMobil_KeyDown(object sender, KeyEventArgs e)
     {
-      if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+      if (e.KeyCode == Keys.Up)
+      {
+        txtNamaBarang.Focus();
+      }
+      if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab || e.KeyCode == Keys.Down)
       {
         txtKodeJual.Focus();
       }
@@ -505,7 +508,11 @@ namespace Megah_Motor_Inventory
 
     private void txtKodeJual_KeyDown(object sender, KeyEventArgs e)
     {
-      if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+      if (e.KeyCode == Keys.Up)
+      {
+        txtTipeMobil.Focus();
+      }
+      if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab || e.KeyCode == Keys.Down)
       {
         txtKodeMandarin.Focus();
       }
@@ -513,34 +520,258 @@ namespace Megah_Motor_Inventory
 
     private void txtKodeMandarin_KeyDown(object sender, KeyEventArgs e)
     {
-      if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+      if(e.KeyCode == Keys.Up)
       {
-        txtHurufMandarin.Focus();
+        txtKodeJual.Focus();
+      }
+      if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab || e.KeyCode == Keys.Down)
+      {
+        var input = 0;
+        if (int.TryParse(txtKodeMandarin.Text, out input))
+        {
+          txtJumlahBarang.Focus();
+        }
+        else
+        {
+          MessageBox.Show("Kode mandarin harus berupa angka!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
       }
     }
 
-    private void txtHurufMandarin_KeyDown(object sender, KeyEventArgs e)
+    private void txtJumlahBarang_KeyDown(object sender, KeyEventArgs e)
     {
-      if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+      if(e.KeyCode == Keys.Up)
       {
-        numJumlahBarang.Focus();
+        txtKodeMandarin.Focus();
+      }
+      if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab || e.KeyCode == Keys.Down)
+      {
+        var input = 0;
+        if (int.TryParse(txtJumlahBarang.Text, out input))
+        {
+          txtJumlahCetak.Focus();
+        }
+        else
+        {
+          MessageBox.Show("Jumlah barang harus berupa angka!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
       }
     }
 
-    private void numJumlahBarang_KeyDown(object sender, KeyEventArgs e)
+    private void txtJumlahCetak_KeyDown(object sender, KeyEventArgs e)
     {
-      if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+      if(e.KeyCode == Keys.Up)
       {
-        numJumlahCetak.Focus();
+        txtJumlahBarang.Focus();
+      }
+      if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab || e.KeyCode == Keys.Down)
+      {
+        var input = 0;
+        if (int.TryParse(txtJumlahCetak.Text, out input))
+        {
+          btnCetak.Focus();
+        }
+        else
+        {
+          MessageBox.Show("Jumlah cetak harus berupa angka!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
       }
     }
 
-    private void numJumlahCetak_KeyDown(object sender, KeyEventArgs e)
+    private void button1_Click(object sender, EventArgs e)
     {
-      if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+      string text = System.IO.File.ReadAllText("./settings.txt");
+      string input = Interaction.InputBox("Masukkan nama printer", "Setting Printer", text);
+      string dirParameter = AppDomain.CurrentDomain.BaseDirectory + @"\settings.txt";
+      FileStream fParameter = new FileStream(dirParameter, FileMode.Create, FileAccess.Write);
+      StreamWriter m_WriterParameter = new StreamWriter(fParameter);
+      m_WriterParameter.BaseStream.Seek(0, SeekOrigin.End);
+      m_WriterParameter.Write(input);
+      m_WriterParameter.Flush();
+      m_WriterParameter.Close();
+    }
+
+    private void frmMain_KeyUp(object sender, KeyEventArgs e)
+    {
+      MessageBox.Show("Selamat datang");
+    }
+
+    private void show_pengurangan()
+    {
+
+      lbPengurangan.Items.Clear();
+
+      try
       {
-        btnCetak.Focus();
+        conn.Open();
+        String query = "SELECT * FROM pengurangan ORDER BY id DESC";
+        OleDbCommand cmd = new OleDbCommand();
+        cmd.CommandType = CommandType.Text;
+        cmd.CommandText = query;
+        cmd.Connection = conn;
+
+        OleDbDataReader reader = cmd.ExecuteReader();
+        if (reader.HasRows)
+        {
+          while (reader.Read())
+          {
+            lbPengurangan.Items.Add("["+reader["tanggal"].ToString().Substring(0, 10)+"] " + reader["asal_barang"]+" | "+reader["nama_barang"]+" | " +reader["kode_jual"]+" | "+" sisa "+reader["jumlah_akhir"]);
+          }
+        }
+        reader.Close();
+        conn.Close();
+      }
+      catch (Exception ex)
+      {
+        MessageBox.Show(ex.ToString(), "Gagal", MessageBoxButtons.OK, MessageBoxIcon.Warning);
       }
     }
-  }
+
+    private void txtPengurangan_KeyDown(object sender, KeyEventArgs e)
+    {
+      String kodeJual = txtPengurangan.Text;
+      if (e.KeyCode == Keys.Enter)  
+      {
+        // Pencarian data
+        if (penguranganBarang(kodeJual))
+        {
+          insertPengurangan(kodeJual);
+          updateBarang(kodeJual);
+        };
+        txtPengurangan.Text = "";
+        txtPengurangan.Focus();
+      }
+    }
+
+    private bool penguranganBarang(String kodeJual)
+    {
+      bool res = false;
+      try
+      {
+        conn.Open();
+        String query = "SELECT * FROM barang WHERE kode_jual = '"+kodeJual+"'";
+        OleDbCommand cmd = new OleDbCommand();
+        cmd.CommandType = CommandType.Text;
+        cmd.CommandText = query;
+        cmd.Connection = conn;
+
+        OleDbDataReader reader = cmd.ExecuteReader();
+        if (reader.HasRows)
+        {
+          while (reader.Read())
+          {
+            res = true;
+          } 
+        }
+        else
+        {
+          MessageBox.Show("Barang tidak ditemukan!", "Gagal", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+          res = false;
+        }
+        reader.Close();
+        conn.Close();
+      }
+      catch (Exception ex)
+      {
+        MessageBox.Show(ex.ToString(), "Gagal", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        res = false;
+      }
+      return res;
+    }
+
+    private void insertPengurangan(String kodeJual)
+    {
+      String asalBarang = "", namaBarang = "";
+      int jumlahAwal = 0, jumlahAkhir = 0;
+      try
+      {
+        conn.Open();
+        String query = "SELECT * FROM barang WHERE kode_jual = '" + kodeJual + "'";
+        OleDbCommand cmd = new OleDbCommand();
+        cmd.CommandType = CommandType.Text;
+        cmd.CommandText = query;
+        cmd.Connection = conn;
+
+        OleDbDataReader reader = cmd.ExecuteReader();
+        if (reader.HasRows)
+        {
+          while (reader.Read())
+          {
+            asalBarang = reader["asal_barang"].ToString();
+            namaBarang = reader["nama_barang"].ToString();
+            jumlahAwal = int.Parse(reader["jumlah_barang"].ToString());
+            jumlahAkhir = jumlahAwal - 1;
+          }
+        }
+        else
+        {
+          MessageBox.Show("Barang tidak ditemukan!", "Gagal", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
+        reader.Close();
+        conn.Close();
+      }
+      catch (Exception ex)
+      {
+        MessageBox.Show(ex.ToString(), "Gagal", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+      }
+      try
+      {
+        conn.Open();
+        String query = "INSERT INTO pengurangan (tanggal, asal_barang, nama_barang, kode_jual, jumlah_awal, jumlah_akhir) VALUES (@tanggal, @asalBarang, @namaBarang, @kodeJual, @jumlahAwal, @jumlahAkhir)";
+        OleDbCommand cmd = new OleDbCommand();
+        cmd.CommandType = CommandType.Text;
+        cmd.CommandText = query;
+        cmd.Parameters.AddWithValue("@tanggal", new DateTime());
+        cmd.Parameters.AddWithValue("@asalBarang", asalBarang);
+        cmd.Parameters.AddWithValue("@namaBarang", namaBarang);
+        cmd.Parameters.AddWithValue("@kodeJual", kodeJual);
+        cmd.Parameters.AddWithValue("@jumlahAwal", jumlahAwal);
+        cmd.Parameters.AddWithValue("@jumlahAkhir", jumlahAkhir);
+        cmd.Connection = conn;
+
+        cmd.ExecuteNonQuery();
+        conn.Close();
+        //MessageBox.Show("Data berhasil disimpan", "Berhasil", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        show_pengurangan();
+      }
+      catch (Exception ex)
+      {
+        MessageBox.Show(ex.ToString(), "Gagal", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+      }
+    }
+
+    private void updateBarang(String kodeJual)
+    {
+      try
+      {
+        conn.Open();
+        String query = "UPDATE barang SET jumlah_barang = jumlah_barang -1 WHERE kode_jual = @kodeJual";
+        OleDbCommand cmd = new OleDbCommand();
+        cmd.CommandType = CommandType.Text;
+        cmd.CommandText = query;
+        cmd.Parameters.AddWithValue("@kodeJual", kodeJual);
+        cmd.Connection = conn;
+
+        cmd.ExecuteNonQuery();
+        conn.Close();
+        //MessageBox.Show("Data berhasil disimpan", "Berhasil", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        show_data();
+      }
+      catch (Exception ex)
+      {
+        MessageBox.Show(ex.ToString(), "Gagal", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+      }
+    }
+
+    private void button2_Click(object sender, EventArgs e)
+    {
+      frmReport frmReport = new frmReport();
+      frmReport.ShowDialog();
+    }
+
+    private void label1_Click(object sender, EventArgs e)
+    {
+
+    }
+  }  
 }
